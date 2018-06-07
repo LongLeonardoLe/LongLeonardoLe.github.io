@@ -1,0 +1,64 @@
+html {
+	overflow-y: scroll;
+	display: block;
+}
+
+body {
+	font-size: 16px;
+	text-align: left;
+	color: #000000;
+	background-color: #ffffff;
+}
+
+div {
+	position: relative;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+    padding-top: 10px;
+    text-align: left;
+    margin: 0px;
+}
+
+div#container {
+	width: 975px;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+div#header {
+	border-bottom: 1px solid #bbbbbb;
+	overflow: auto;
+	padding: 5px;
+	padding-top: 15px;
+}
+
+div#navigation {
+	position: relative;
+	float: left;
+	width: 200px;
+	text-align: left;
+	padding-top: 30px;
+	padding-right: 2px;
+	padding-left: 20px;
+}
+
+div.nav-tab {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 2px;
+	font-size: 14px;
+	color: #3284bf;
+}
+
+div#main {
+	float: left;
+	min-height:  400px;
+	max-width: 715px;
+	padding-left: 20px;
+	padding-right: 2px;
+	text-align: left;
+}
