@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>ELASTICSEARCH</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="elasticsearch"><a class="header-link" href="#elasticsearch"></a>ELASTICSEARCH</h1>
+<ul class="list">
+<li>search engine based on Lucene (an information retrieval software library)</li>
+<li>its magic is to be able to search by HTTP requests using keywork <code>_search</code> and extra flexibility and power using <code>query</code></li>
+<li>provides a distributed, multitenant-capable full-text search engine with HTTP web interface and schema-free JSON docs<ul class="list">
+<li>scalable search</li>
+<li>near real-time search</li>
+<li>supports multitenancy</li>
+<li>indices can be divided into shards, each shard can have 0/more replicas</li>
+<li>each node hosts 1/more shards, acts as a coordinator to delegate ops to the correct shards</li>
+<li>rebalancing and routing are done automatically</li>
+</ul>
+</li>
+<li>supports facetiing and percolating - can be useful for notifying if new docs match for registered queries</li>
+<li>&quot;gateway&quot;: handles long-term persistence of the index</li>
+</ul>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Notes on Stuff</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="notes-on-stuff"><a class="header-link" href="#notes-on-stuff"></a>Notes on Stuff</h1>
+<h2 id="remote-procedure-call-(rpc)"><a class="header-link" href="#remote-procedure-call-(rpc)"></a>REMOTE PROCEDURE CALL (RPC)</h2>
+<ul class="list">
+<li><p>Cause a procedure to execute in a different address space</p>
+</li>
+<li><p>Client-server interaction, inter-process communication</p>
+</li>
+</ul>
+<h2 id="request-response-protocol"><a class="header-link" href="#request-response-protocol"></a>Request-response protocol</h2>
+<ul class="list">
+<li>Initiated by client -&gt; send to a known remote server -&gt; execute procedure with supplied parameters<ul class="list">
+<li>Remote server sends response to client -&gt; app continues</li>
+</ul>
+</li>
+<li>while server processing the call, client is blocked unless sends an asynchronous request to server</li>
+<li>sequence of events:<ul class="list">
+<li>client calls client stub: local procedure call, para in stack</li>
+<li>client stub packs para (marshalling) -&gt; make system call -&gt; send the message</li>
+<li>client&#39;s local OS sends mess from client machine -&gt; server machine</li>
+<li>local OS on server machine passes packets -&gt; server stub</li>
+<li>server stub unpacks para (unmarshalling)</li>
+<li>server stub calls server procedure</li>
+</ul>
+</li>
+</ul>
+<h2 id="message-queue"><a class="header-link" href="#message-queue"></a>MESSAGE QUEUE</h2>
+<ul class="list">
+<li>used for inter-process communication, or inter-thread communication within the same process, or inter-application communication</li>
+<li>decouples the sender from the receiver</li>
+<li>provide asynchronous communications protocol:<ul class="list">
+<li>a message in the message queue don&#39;t require an immediate response</li>
+<li>messages placed onto the queue stored until the recipient retrieves them</li>
+</ul>
+</li>
+</ul>
+<h2 id="rabbitmq"><a class="header-link" href="#rabbitmq"></a>RABBITMQ</h2>
+<ul class="list">
+<li>RPC in RabbitMQ:<ul class="list">
+<li>a client/publisher sends a mesasge and a server/consumer responses</li>
+<li>the client must know which queue it&#39;s supposed to listen to for the the response from the server</li>
+<li>the server also needs to send the response to the matched queue for the client be able to receive it</li>
+</ul>
+</li>
+</ul>
+<h3 id="definitions"><a class="header-link" href="#definitions"></a>DEFINITIONS</h3>
+<ul class="list">
+<li>synchronous vs asynchronous:<ul class="list">
+<li>synchronous: tasks/processes are aware of each other and must wait for another to finish before moving on</li>
+<li>asynchronous: they are not aware of others, totally &quot;independent&quot;</li>
+</ul>
+</li>
+</ul>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>APACHE THRIFT</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="apache-thrift"><a class="header-link" href="#apache-thrift"></a>APACHE THRIFT</h1>
+<ul class="list">
+<li>a software framework for cross-language services development</li>
+<li>data normalization: pack parameters, data into Thrift type serialization, through a messaging platform (eg, message queue), unpack the serialization</li>
+<li>when generate files from thrift, you are able to serialize the args/results of the declared services and send them over to other machines</li>
+</ul>
+<h1 id="servers-in-thrift"><a class="header-link" href="#servers-in-thrift"></a>SERVERS IN THRIFT</h1>
+<h3 id="tsimpleserver"><a class="header-link" href="#tsimpleserver"></a>TSimpleServer</h3>
+<ul class="list">
+<li>simple singlethreaded server, blocks incoming requests until it completes the current request</li>
+<li>best for testing/debugging, a dedicated machine-machine connection</li>
+</ul>
+<h3 id="tnonblockingserver"><a class="header-link" href="#tnonblockingserver"></a>TNonblockingServer</h3>
+<ul class="list">
+<li>operates a set of IO threads (default: 1) and one worker thread</li>
+<li>doesn&#39;t block request sent to server but only capable of processing one request at a time</li>
+<li>fit for small task processing, so it won&#39;t take much resource from the OS</li>
+</ul>
+<h3 id="thshaserver"><a class="header-link" href="#thshaserver"></a>THsHaServer</h3>
+<ul class="list">
+<li>default 1 thread for IO and a thread pool of worker threads</li>
+<li>doesn&#39;t block client requests and capable of processing multiple operations at a time</li>
+<li>good for performing multiple Thrift server operation concurrently, client-server architecture</li>
+</ul>
+<h3 id="tthreadedserver-(threads-threads)"><a class="header-link" href="#tthreadedserver-(threads-threads)"></a>TThreadedServer (threads-threads)</h3>
+<ul class="list">
+<li>create one thread for each client connected</li>
+<li>release a thread when the client is disconnected</li>
+<li>good for dynamically scalable server up to a concurrent connection limit</li>
+</ul>
+<h3 id="tthreadedpoolserver"><a class="header-link" href="#tthreadedpoolserver"></a>TThreadedPoolServer</h3>
+<ul class="list">
+<li>manages clients using a thread pool, the number of threads in the pool is limited</li>
+<li>accepts all connections</li>
+<li>the idea is like TThreadedServer but a thread returns to the pool instead of being released</li>
+<li>consumes a good amount of resources, can be ideal for peer-to-peer architecture to distribute the need of resources among users</li>
+</ul>
+<h3 id="tthreadedselectorserver"><a class="header-link" href="#tthreadedselectorserver"></a>TThreadedSelectorServer</h3>
+<ul class="list">
+<li>has two thread pools for IO and worker</li>
+<li>doens&#39;t create IO threads for all requests -&gt; use less resources</li>
+<li>not so good for client-server architecture</li>
+</ul>
+<h1 id="optional-vs.-required"><a class="header-link" href="#optional-vs.-required"></a>OPTIONAL vs. REQUIRED</h1>
+<ul class="list">
+<li>quite obvious in the name</li>
+<li>one thing to pay attention is that versions can change and if missing required fields in one version, especially the new version doesn&#39;t have one of requierd fields in the old one, troubles coming</li>
+</ul>
+    </article>
+  </body>
+</html>

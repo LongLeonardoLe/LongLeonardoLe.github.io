@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>SCRIBE</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="scribe"><a class="header-link" href="#scribe"></a>SCRIBE</h1>
+<ul class="list">
+<li>A server for aggregating streaming log data</li>
+<li>Scale a very large number of nodes, be robust to network/node failures</li>
+<li><p>Doesn&#39;t provide transactional guarantees -&gt; don&#39;t use it for database transactions</p>
+</li>
+<li><p>Topology: arranged in a directed graph, each server only knows the next server in the graph
+--&gt; allows adding extra layers of fan-in, batching messages before sending, without needs to understand datacenter topology</p>
+</li>
+<li><p>Reliability:</p>
+<pre class="hljs"><code>+ middle-ground, enough <span class="hljs-keyword">to</span> get <span class="hljs-keyword">all</span> data almost <span class="hljs-keyword">of</span> the <span class="hljs-built_in">time</span>, but <span class="hljs-keyword">not</span> enough <span class="hljs-keyword">to</span> require heavyweight protocols <span class="hljs-keyword">and</span> disk usage
++ spools data <span class="hljs-keyword">to</span> disk <span class="hljs-keyword">to</span> handle intermittent connectivity failures, but doesn<span class="hljs-symbol">'t</span> sync a log <span class="hljs-keyword">for</span> every message -&gt; possible <span class="hljs-keyword">for</span> a small amount <span class="hljs-keyword">of</span> data loss <span class="hljs-keyword">when</span> crash <span class="hljs-keyword">or</span> catastrophic failures (<span class="hljs-keyword">to</span> spool data: <span class="hljs-keyword">to</span> read <span class="hljs-keyword">and</span> store it, <span class="hljs-keyword">to</span> mediate the data between an app <span class="hljs-keyword">and</span> something slow)
++ <span class="hljs-keyword">if</span> scribe <span class="hljs-keyword">on</span> a client (resender) <span class="hljs-keyword">is</span> unable <span class="hljs-keyword">to</span> send messages <span class="hljs-keyword">to</span> the central scribe server -&gt; saves them <span class="hljs-keyword">on</span> the local disk -&gt; sends them <span class="hljs-keyword">when</span> the connection recovers
++ <span class="hljs-keyword">to</span> avoid overloading the central server upon a restart, the resender waits <span class="hljs-keyword">for</span> a random amount <span class="hljs-keyword">of</span> <span class="hljs-built_in">time</span> 
++ the central server has the same behavior: <span class="hljs-keyword">if</span> the filesystem goes down -&gt; the server writes <span class="hljs-keyword">to</span> local disk <span class="hljs-keyword">until</span> recovery 
++ <span class="hljs-keyword">when</span> loss <span class="hljs-keyword">of</span> data happen:
+      ~ a client can<span class="hljs-symbol">'t</span> connect <span class="hljs-keyword">to</span> either the local <span class="hljs-keyword">or</span> central scribe server
+            ~ <span class="hljs-keyword">if</span> a scribe server crashes -&gt; lose data that<span class="hljs-symbol">'s</span> <span class="hljs-keyword">in</span> memory but <span class="hljs-keyword">not</span> <span class="hljs-keyword">on</span> disk
+            ~ resender can<span class="hljs-symbol">'t</span> connect <span class="hljs-keyword">to</span> any central server <span class="hljs-keyword">and</span> its local disk fills up
+          ~ timeout conditions</code></pre></li>
+<li><p>Data model:</p>
+<pre class="hljs"><code>+ <span class="hljs-keyword">a</span> message <span class="hljs-built_in">has</span> <span class="hljs-number">2</span> <span class="hljs-built_in">string</span><span class="hljs-variable">s:</span> category <span class="hljs-built_in">and</span> the actual message
++ category: description about the msg, same category -&gt; same place
++ actual ms<span class="hljs-variable">g:</span> data <span class="hljs-keyword">to</span> <span class="hljs-keyword">be</span> logged</code></pre></li>
+<li><p>Using Thrift for flexibility</p>
+</li>
+</ul>
+    </article>
+  </body>
+</html>

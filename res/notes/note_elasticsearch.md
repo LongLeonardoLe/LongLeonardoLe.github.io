@@ -1,0 +1,12 @@
+# ELASTICSEARCH
+- search engine based on Lucene (an information retrieval software library)
+- its magic is to be able to search by HTTP requests using keywork `_search` and extra flexibility and power using `query`
+- provides a distributed, multitenant-capable full-text search engine with HTTP web interface and schema-free JSON docs
+	- scalable search
+	- near real-time search
+	- supports multitenancy
+	- indices can be divided into shards, each shard can have 0/more replicas
+	- each node hosts 1/more shards, acts as a coordinator to delegate ops to the correct shards
+	- rebalancing and routing are done automatically
+- supports facetiing and percolating - can be useful for notifying if new docs match for registered queries
+- "gateway": handles long-term persistence of the index

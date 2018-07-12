@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>NOSQL</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="nosql"><a class="header-link" href="#nosql"></a>NOSQL</h1>
+<ul class="list">
+<li>schema-less, allows grander flexibility</li>
+<li>good use for big data, real-time web application</li>
+<li>advantage:<ul class="list">
+<li>simplicity for design</li>
+<li>simpler scaling horizontally (expanding)</li>
+<li>better control over availability</li>
+<li>somehow faster than default SQL</li>
+</ul>
+</li>
+<li>disadvantage:<ul class="list">
+<li>lack of standardized interfaces</li>
+<li>the SQL has a huge established community and investment</li>
+</ul>
+</li>
+</ul>
+<h2 id="key-value-store"><a class="header-link" href="#key-value-store"></a>KEY-VALUE STORE</h2>
+<ul class="list">
+<li>imagine dictionary, hash table</li>
+<li>one (unique) key <-> one (many) objects/values</li>
+</ul>
+<h2 id="redis"><a class="header-link" href="#redis"></a>REDIS</h2>
+<ul class="list">
+<li>in-memory key-value db</li>
+<li>atomic exectuion of command blocks and scripts</li>
+<li>several supported data types: string, hash, set, sorted set, list, bit array</li>
+<li>notable features:<ul class="list">
+<li>real-time analysis</li>
+<li>queue: has blocking queue</li>
+<li>publish/subscribe</li>
+<li>leaderboards thanks to sorted set</li>
+<li>caching (in the same manner as memcache)</li>
+</ul>
+</li>
+<li>data type:<ul class="list">
+<li>keys: binary safe, can use any sequence as a key, better to hash the key</li>
+<li>strings: just string, useful for caching HTML fragments of pages support the INCR, INCRBY (increment by), DECR, DECRBY. Those are atomic which means mutilple clients issuing INCR against the same key will never enter into a race condition.</li>
+<li>lists: collections of strings, to the order of insertion (linked lists) blocking ops: if the list is empty, only return to the caller when the new element is added, or timeout is reached. Good use cases:<ul class="list">
+<li>remember the lastest updates of something</li>
+<li>communication between processes in producer-consumer pattern</li>
+</ul>
+</li>
+<li>sets: collections of unique, unsorted elements - no 2 elements share the same content</li>
+<li>sorted sets: every element is associated to a float value (score), add an element O(log(N)), use cases: leaderboard, when an element is updated/added, the set happens to be sorted at the time the modification/insertion is done</li>
+<li>hashes: maps composed of fields associated to keys, both of them are strings, handy to represent objects which usually contains multiple fields</li>
+<li>bit arrays (bitmaps): store bits (duh?!), has operations of groups of bits. Use cases:<ul class="list">
+<li>extremely useful in storing space efficient</li>
+<li>count the active users</li>
+</ul>
+</li>
+<li>hyperloglogs: probabilistic data structure to count unique things, use case: count how many unique viewers of a video, unique visitors of a website</li>
+</ul>
+</li>
+</ul>
+<h2 id="memcached"><a class="header-link" href="#memcached"></a>MEMCACHED</h2>
+<ul class="list">
+<li>in-memory key-value store for small chunk of arbitrary data</li>
+<li>distributed caching system, short-term memory</li>
+<li>allow to make better use of memory, all of the servers look into the same virtual pool of memory</li>
+<li>MySQL directly supports the Memcached API </li>
+</ul>
+<h2 id="kyotocabinet"><a class="header-link" href="#kyotocabinet"></a>KYOTOCABINET</h2>
+<ul class="list">
+<li>successor of TokyoCabinet</li>
+<li>on-disk B+ trees and hash tables for key-value -&gt; better robustness</li>
+<li>fast: store 1 mil records in 0.9 s (hash table) and 1.1 s (B+ tree)</li>
+<li>thread safe: doesn&#39;t allow multiple processes access one DB file at the same time</li>
+</ul>
+    </article>
+  </body>
+</html>
