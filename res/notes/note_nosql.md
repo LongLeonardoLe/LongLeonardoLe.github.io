@@ -1,4 +1,4 @@
-# NSQL
+# NoSQL
   - schema-less, allows grander flexibility
   - good use for big data, real-time web application
   - advantage:
