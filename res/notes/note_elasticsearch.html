@@ -11,9 +11,9 @@
   <body>
     <article class="markdown-body"><h1 id="elasticsearch"><a class="header-link" href="#elasticsearch"></a>ELASTICSEARCH</h1>
 <ul class="list">
-<li>search engine based on Lucene (an information retrieval software library)</li>
-<li>its magic is to be able to search by HTTP requests using keywork <code>_search</code> and extra flexibility and power using <code>query</code></li>
-<li>provides a distributed, multitenant-capable full-text search engine with HTTP web interface and schema-free JSON docs<ul class="list">
+<li>Search engine based on Lucene (an information retrieval software library)</li>
+<li>Its magic is to be able to search by HTTP requests using keywork <code>_search</code> and extra flexibility and power using <code>query</code></li>
+<li>Provides a distributed, multitenant-capable full-text search engine with HTTP web interface and schema-free JSON docs<ul class="list">
 <li>scalable search</li>
 <li>near real-time search</li>
 <li>supports multitenancy</li>
@@ -22,8 +22,43 @@
 <li>rebalancing and routing are done automatically</li>
 </ul>
 </li>
-<li>supports facetiing and percolating - can be useful for notifying if new docs match for registered queries</li>
+<li>Supports facetiing and percolating - can be useful for notifying if new docs match for registered queries</li>
 <li>&quot;gateway&quot;: handles long-term persistence of the index</li>
+</ul>
+<h3 id="cluster"><a class="header-link" href="#cluster"></a>Cluster</h3>
+<ul class="list">
+<li>A collection of 1/more nodes (servers)</li>
+<li>Holds the entire data, provides federated indexing and seach capabilities across all nodes</li>
+<li>Each cluster has a unique name; one node can only be part of one cluster if the node is set up to join the cluster by its name; the default name is <code>elasticsearch</code></li>
+</ul>
+<h3 id="node"><a class="header-link" href="#node"></a>Node</h3>
+<ul class="list">
+<li>A node: a single server, part of a cluster, stores data, participates in the indexing and seach capabilities</li>
+<li>Is identified by a name; is assigned an UUID at startup</li>
+<li>Can be configured to join a cluster by the cluster name, by default join the cluster named <code>elasticsearch</code></li>
+</ul>
+<h3 id="index"><a class="header-link" href="#index"></a>Index</h3>
+<ul class="list">
+<li>An index: a collection of documents that have similar characteristics</li>
+<li>Is identified by a name: is used to refer to the index</li>
+</ul>
+<h3 id="document"><a class="header-link" href="#document"></a>Document</h3>
+<ul class="list">
+<li>Is a basic unit of information that can be indexed</li>
+<li>Is expressed in JSON</li>
+</ul>
+<h3 id="shards-&-replicas"><a class="header-link" href="#shards-&-replicas"></a>Shards &amp; Replicas</h3>
+<h4 id="shard"><a class="header-link" href="#shard"></a>Shard</h4>
+<ul class="list">
+<li>An index can be subdivided into multiple shards</li>
+<li>Can define the number of shards when creating an index</li>
+<li>Each shard is fully-functional and independent &quot;index&quot; that can be hosted on any node in a cluster</li>
+<li>Allows to horizontally split/scale</li>
+<li>Allows to distribute and parallelize operations across shards -&gt; increase performance/throughput<h4 id="replicas"><a class="header-link" href="#replicas"></a>Replicas</h4>
+</li>
+<li>Make 1/more copies of index&#39;s shards, called replicas</li>
+<li>Provides high availability in case a shard/node fails -&gt; a replica shard is never allocated on the same node as its origin</li>
+<li>Allows to scale out the search volume/throughput</li>
 </ul>
     </article>
   </body>
