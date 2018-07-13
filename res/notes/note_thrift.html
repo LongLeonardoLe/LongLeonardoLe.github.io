@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>APACHE THRIFT</title>
+    <title>Apache Thrift</title>
     <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
     <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
     <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
   </head>
   <body>
-    <article class="markdown-body"><h1 id="apache-thrift"><a class="header-link" href="#apache-thrift"></a>APACHE THRIFT</h1>
+    <article class="markdown-body"><h1 id="apache-thrift"><a class="header-link" href="#apache-thrift"></a>Apache Thrift</h1>
 <ul class="list">
 <li>a software framework for cross-language services development</li>
 <li>data normalization: pack parameters, data into Thrift type serialization, through a messaging platform (eg, message queue), unpack the serialization</li>
 <li>when generate files from thrift, you are able to serialize the args/results of the declared services and send them over to other machines</li>
 </ul>
-<h1 id="servers-in-thrift"><a class="header-link" href="#servers-in-thrift"></a>SERVERS IN THRIFT</h1>
+<h1 id="servers-in-thrift"><a class="header-link" href="#servers-in-thrift"></a>Servers in Thrift</h1>
 <h3 id="tsimpleserver"><a class="header-link" href="#tsimpleserver"></a>TSimpleServer</h3>
 <ul class="list">
 <li>simple singlethreaded server, blocks incoming requests until it completes the current request</li>
@@ -52,7 +52,7 @@
 <li>doens&#39;t create IO threads for all requests -&gt; use less resources</li>
 <li>not so good for client-server architecture</li>
 </ul>
-<h1 id="optional-vs.-required"><a class="header-link" href="#optional-vs.-required"></a>OPTIONAL vs. REQUIRED</h1>
+<h1 id="`optional`-vs.-`required`"><a class="header-link" href="#`optional`-vs.-`required`"></a><code>optional</code> vs. <code>required</code></h1>
 <ul class="list">
 <li>quite obvious in the name</li>
 <li>one thing to pay attention is that versions can change and if missing required fields in one version, especially the new version doesn&#39;t have one of requierd fields in the old one, troubles coming</li>

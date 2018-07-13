@@ -1,4 +1,4 @@
-# SCRIBE
+# Scribe
   - A server for aggregating streaming log data
   - Scale a very large number of nodes, be robust to network/node failures
   - Doesn't provide transactional guarantees -> don't use it for database transactions

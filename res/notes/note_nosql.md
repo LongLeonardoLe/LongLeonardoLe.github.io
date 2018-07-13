@@ -1,4 +1,4 @@
-# NOSQL
+# NSQL
   - schema-less, allows grander flexibility
   - good use for big data, real-time web application
   - advantage:
@@ -10,12 +10,12 @@
     + lack of standardized interfaces
     + the SQL has a huge established community and investment
 
-## KEY-VALUE STORE
+## Key-value Store
   - imagine dictionary, hash table
   - one (unique) key <-> one (many) objects/values
 
 
-## REDIS
+## Redis
   - in-memory key-value db
   - atomic exectuion of command blocks and scripts
   - several supported data types: string, hash, set, sorted set, list, bit array
@@ -40,14 +40,14 @@
     + hyperloglogs: probabilistic data structure to count unique things, use case: count how many unique viewers of a video, unique visitors of a website
 
 
-## MEMCACHED
+## Memcached
   - in-memory key-value store for small chunk of arbitrary data
   - distributed caching system, short-term memory
   - allow to make better use of memory, all of the servers look into the same virtual pool of memory
   - MySQL directly supports the Memcached API 
 
 
-## KYOTOCABINET
+## Kyoto Cabinet
   - successor of TokyoCabinet
   - on-disk B+ trees and hash tables for key-value -> better robustness
   - fast: store 1 mil records in 0.9 s (hash table) and 1.1 s (B+ tree)

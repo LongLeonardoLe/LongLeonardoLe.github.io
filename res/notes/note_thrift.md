@@ -1,10 +1,10 @@
-# APACHE THRIFT
+# Apache Thrift
   - a software framework for cross-language services development
   - data normalization: pack parameters, data into Thrift type serialization, through a messaging platform (eg, message queue), unpack the serialization
   - when generate files from thrift, you are able to serialize the args/results of the declared services and send them over to other machines
 
 
-# SERVERS IN THRIFT
+# Servers in Thrift
 
 ### TSimpleServer
   - simple singlethreaded server, blocks incoming requests until it completes the current request
@@ -37,6 +37,6 @@
   - not so good for client-server architecture
 
 
-# OPTIONAL vs. REQUIRED
+# `optional` vs. `required`
   - quite obvious in the name
   - one thing to pay attention is that versions can change and if missing required fields in one version, especially the new version doesn't have one of requierd fields in the old one, troubles coming
