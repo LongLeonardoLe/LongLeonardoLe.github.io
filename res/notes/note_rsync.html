@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>How Rsync works</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="how-rsync-works"><a class="header-link" href="#how-rsync-works"></a>How Rsync works</h1>
+<ul class="list">
+<li>generator process: identifies changed files and manages the file level logic</li>
+<li>sender: the Rsync process that has access to the source files being synchronized</li>
+<li>receiver: as a role is the destination system; as a process is that receives update data and writes it to disk</li>
+</ul>
+<h3 id="the-pipeline"><a class="header-link" href="#the-pipeline"></a>The Pipeline</h3>
+<p>A set of processes that communicate in a <strong>unidirectional</strong> way. Once th file has been shared the pipleline behaves like:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generator → sender → receiver</p>
+<p>Each process runs independently and is delayed only when the pipelines stall or when waiting for disk I/O or CPU resources.</p>
+<h3 id="the-generator"><a class="header-link" href="#the-generator"></a>The Generator</h3>
+    </article>
+  </body>
+</html>

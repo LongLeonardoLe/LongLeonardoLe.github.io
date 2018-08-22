@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>POCO</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="poco"><a class="header-link" href="#poco"></a>POCO</h1>
+<ul class="list">
+<li>Is a collection of C++ class libraries</li>
+<li>It focuses on network-centric applications</li>
+<li>Is written in ANSI/ISO Standard C++ and based on the C++ Standard Library/STL</li>
+<li>Portable and available on many platforms</li>
+<li>Open source, licensed under the Boost Software License</li>
+</ul>
+<h2 id="types-and-byte-order"><a class="header-link" href="#types-and-byte-order"></a>Types and Byte Order</h2>
+<h3 id="the-any-type"><a class="header-link" href="#the-any-type"></a>The Any Type</h3>
+<ul class="list">
+<li>An instance of <code>Poco::Any</code> can hold a value of any built-in or user-defined type</li>
+<li>Supports value semantic</li>
+<li>The value can be extracted in a type-safe manner: if the instance of <code>Poco::Any</code> <em>A</em> is instantiated with an <code>int</code> type, extracting <em>A</em> to any type that <strong>not</strong> <code>int</code>  will throw a <code>BadCastException</code></li>
+</ul>
+<h3 id="the-dynamicany-type"><a class="header-link" href="#the-dynamicany-type"></a>The DynamicAny Type</h3>
+<ul class="list">
+<li>An instance of <code>Poco::DynamicAny</code> can hold a value of any type for which a <strong>DynamicAnyHolder</strong> specialization is available, which includes all C++ built-in types with addition of <code>std::string</code>, <code>DateTime</code>, <code>LocalDateTime</code>, <code>TimeStamp</code>, and <code>std::vector&lt;DynamicAny&gt;</code></li>
+<li>Same as the <code>Any</code> type, the value can be extracted in a type-safe manner</li>
+</ul>
+<h2 id="memory-management"><a class="header-link" href="#memory-management"></a>Memory Management</h2>
+<h3 id="reference-counting"><a class="header-link" href="#reference-counting"></a>Reference Counting</h3>
+<ul class="list">
+<li>Is a technique of storing the number of references, pointers, or handlers to a resource such as an object or a block of memory. Is used to avoid the memory leak.</li>
+<li>Given an object, each time a reference to the object is created or copied, the reference count is incremented. And if a reference to the object is destroyed or overwritten, the count is decremented.</li>
+<li>The initial count is 1.</li>
+<li>When the reference count reaches zero, the object is deleted.</li>
+<li>In a multithreaded scenario, incrementing and decrementing/comparing reference counters must be atomic operations.</li>
+</ul>
+<h3 id="object-ownership"><a class="header-link" href="#object-ownership"></a>Object Ownership</h3>
+<ul class="list">
+<li>The &quot;owner&quot;, who takes &quot;ownership&quot; of an object, is responsible for deleting the object when it&#39;s no longer needed. Other can point to the object, but they will not delete it.</li>
+<li>Memory leak happens when the owner failed to delete an unused object.</li>
+<li>The ownership is transferable. But at any time, only one owner is allowed. Taking the ownership does not change the reference count.</li>
+<li>Usually, the first pointer to the object takes ownership.</li>
+</ul>
+<h3 id="the-autoptr-class-template"><a class="header-link" href="#the-autoptr-class-template"></a>The AutoPtr Class Template</h3>
+<ul class="list">
+<li><code>Poco::AutoPtr</code> can be instantiated with any class that supports reference counting which must:<ul class="list">
+<li>maintain a reference count (intialized to 1 at creation)</li>
+<li>implement a method <code>void duplicate()</code> that increments the count</li>
+<li>implement a method <code>void release()</code> that decrements the count and deletes the object when the count reaches 0</li>
+</ul>
+</li>
+<li><code>Poco::AutoPtr</code> supports a cast operation. The cast is always typesafe. The <code>dynamic_cast</code> is used internally, so an invalid cast will result in a null pointer.</li>
+<li>Be careful when assging an <code>AutoPtr</code> to a plain pointer, then assgin that plain pointer to another <code>AutoPtr</code>. Both <code>AutoPtr</code>&#39;s will claim the ownership of the object. Instead, explicitly tell <code>AutoPtr</code> that it has to share the ownership of the object or not:<pre class="hljs"><code>AutoPtr::AutoPtr(C* Object, <span class="hljs-keyword">bool</span> shared);
+AutoPtr&amp; AutoPtr::assign(C* object, <span class="hljs-keyword">bool</span> shared);</code></pre></li>
+</ul>
+    </article>
+  </body>
+</html>

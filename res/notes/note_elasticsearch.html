@@ -66,33 +66,33 @@
 <h3 id="elasticsearch-configuration"><a class="header-link" href="#elasticsearch-configuration"></a>Elasticsearch Configuration</h3>
 <ol class="list">
 <li><code>path.data</code> and <code>path.logs</code>: where data and log go to</li>
-<li><code>cluster.name</code> and <code>node.name</code></li>
-</ol>
-<p>As mentioned above, the cluster name is used for a node to join it; for node, it&#39;s good to have a name for the sake of administration</p>
-<ol start="3">
+<li><code>cluster.name</code> and <code>node.name</code><ul class="list">
+<li>As mentioned above, the cluster name is used for a node to join it; for node, it&#39;s good to have a name for the sake of administration</li>
+</ul>
+</li>
 <li>Setting heap size<ul class="list">
 <li>The more heap available, the more memory for caching. However, too much can result long garbage collection pauses.</li>
 <li>Ensure that the physical RAM has enough for kernel system caches</li>
 <li>Pay attention to the cutoff that JVM uses for compressed object pointers and the threshold for zero-based compressed object pointers</li>
 </ul>
 </li>
-<li>JVM heap dump path</li>
-</ol>
-<p>Can configure a scheduled task via OS to remove heap dumps that are older than a configured age</p>
-<ol start="5">
+<li>JVM heap dump path<ul class="list">
+<li>Can configure a scheduled task via OS to remove heap dumps that are older than a configured age</li>
+</ul>
+</li>
 <li>GC logging</li>
 <li>JVM fatal error logs</li>
 </ol>
 <h3 id="system-configuration"><a class="header-link" href="#system-configuration"></a>System Configuration</h3>
 <ol class="list">
-<li>Disable swapping</li>
-</ol>
-<p>Swapping in OS can result in parts of the JVM heap or its executable pages being swapped out to disk</p>
-<ol start="2">
-<li>File descriptors</li>
-</ol>
-<p>Elasticsearch uses a lot of file descriptors or file handlers -&gt; data loss if run out of file descriptors. Make sure to increase if necessary.</p>
-<ol start="3">
+<li>Disable swapping<ul class="list">
+<li>Swapping in OS can result in parts of the JVM heap or its executable pages being swapped out to disk</li>
+</ul>
+</li>
+<li>File descriptors<ul class="list">
+<li>Elasticsearch uses a lot of file descriptors or file handlers -&gt; data loss if run out of file descriptors. Make sure to increase if necessary.</li>
+</ul>
+</li>
 <li>Virtual memory: make sure not result in out of memory exceptions</li>
 <li>Number of threads</li>
 <li>DNS cache settings</li>

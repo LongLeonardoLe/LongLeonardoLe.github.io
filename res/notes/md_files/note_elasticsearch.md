@@ -48,25 +48,21 @@
 ### Elasticsearch Configuration
 1. `path.data` and `path.logs`: where data and log go to
 2. `cluster.name` and `node.name`
-
-As mentioned above, the cluster name is used for a node to join it; for node, it's good to have a name for the sake of administration
+	- As mentioned above, the cluster name is used for a node to join it; for node, it's good to have a name for the sake of administration
 3. Setting heap size
 	- The more heap available, the more memory for caching. However, too much can result long garbage collection pauses.
 	- Ensure that the physical RAM has enough for kernel system caches
 	- Pay attention to the cutoff that JVM uses for compressed object pointers and the threshold for zero-based compressed object pointers
 4. JVM heap dump path
-
-Can configure a scheduled task via OS to remove heap dumps that are older than a configured age
+	- Can configure a scheduled task via OS to remove heap dumps that are older than a configured age
 5. GC logging
 6. JVM fatal error logs
 
 ### System Configuration
 1. Disable swapping
-
-Swapping in OS can result in parts of the JVM heap or its executable pages being swapped out to disk
+	- Swapping in OS can result in parts of the JVM heap or its executable pages being swapped out to disk
 2. File descriptors
-
-Elasticsearch uses a lot of file descriptors or file handlers -> data loss if run out of file descriptors. Make sure to increase if necessary.
+	- Elasticsearch uses a lot of file descriptors or file handlers -> data loss if run out of file descriptors. Make sure to increase if necessary.
 3. Virtual memory: make sure not result in out of memory exceptions
 4. Number of threads
 5. DNS cache settings
