@@ -1,59 +1,93 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Long Le</title>
-		<link rel="stylesheet" type="text/css" href="res/css/main.css">
-	</head>
-	<body>
-		<div id="container" style="background-color: #ffffff;">
-			<!-- header -->
-			<div id="header">
-				<div style="float:left; margin-top:25px">
-					<h1>Long Le</h1>
-					<h3>Associate Software Engineer</h3>
-					<h3>VNG Corporation, Ho Chi Minh City, Vietnam</h3>
-				</div>
-			</div>
+<!DOCTYPE html>
+<html lang="en">
 
-			<!-- navigation -->
-			<div id="navigation">
-				<div style="margin-bottom: 10px;">
-					<img src="https://raw.githubusercontent.com/LongLeonardoLe/LongLeonardoLe.github.io/master/res/images/longle_profile_pic.JPG" width="210">
-				</div>
-				<div class="nav-tab">
-					<a href="index.html">Home</a>
-				</div>
-				<div class="nav-tab">
-					<a href="https://github.com/LongLeonardoLe?tab=repositories" target="_blank">GitHub</a>
-				</div>
-				<div class="nav-tab">
-					<a href="longle_resume.pdf" target="_blank">Resume(CV)</a>
-				</div>
-                <div class="nav-tab">
-                    <a href="https://www.linkedin.com/in/longntle/" target="_blank">LinkedIn</a>
+<head>
+    <title>Long Le</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <style>
+        .commonImg {
+            height: 200px;
+            background: #aaa;
+        }
+
+        .profileImg {
+            height: 300px;
+            max-width: 100%;
+            background: #aaa;
+        }
+
+        .inline-icon {
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="longle_resume.pdf">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Articles</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron" style="margin-bottom: 0">
+        <div class="container" style="margin: auto">
+            <div class="row">
+                <div class="col-xs-12" style="padding-right: 40px;">
+                    <img class="profileImg" src="res/images/profile_img_sqr.jpg" style="margin-bottom: 20px;"></img>
                 </div>
-			</div>
-
-			<!-- content -->
-			<div id="main">
-				<div class="content" style="margin-top:20px;">
-					<p>
-						I am doing back-end engineering in the Server team of <a href="https://developers.zalo.me/" target="_blank">Zalo, VNG.</a> 
-					</p>
-					<p>
-						I studied my first two years of Computer Science at Ho Chi Minh City University of Science, Vietnam National University Ho Chi Minh City and finished my degree at Portland State University, Portland, OR, USA.
-					</p>
+                <div class="col-xs-12">
+                    <h1>Long Le</h1>
+                    <h5>Lead Back-end Software Engineer at Zalo Group</h5>
                     <p>
-                    My interests are <b>Machine Learning and Security</b>.
+                        <i class="material-icons inline-icon">email</i> long.luiz96@gmail.com &nbsp;
+                        <a href="https://www.linkedin.com/in/longntle/">
+                            <i class='fab fa-linkedin'></i> LinkedIn &nbsp;
+                        </a>
                     </p>
-					<p>
-				        I love reading books, especially about history, and listening to music, mainly classical. I do enjoy ballet, or I should say Tchaikovsky's ballet.
-					</p>
-					<p style="padding-top: 20px">
-						Feel free to contact me through email: long.luiz96 [at] gmail [dot] com
-					</p>
-				</div>
-			</div>
-		</div>
-	</body>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px">
+        <div class="row" style="margin:auto">
+            <div class="col-xs-12">
+                <h2>About Me</h2>
+                <p>I am a Lead Back-end Software Engineer working at Zalo, the #1 messaging app in Viet Nam. My main
+                    responsibilities include, but not limited to, maintaining and improving stability and performance
+                    of the back-end system serving 54 million users monthly and more than 1.5 billion messages daily.</p>
+                <p>When not working, I usually exercise, swimming and running, to recharge my enery for the next challenge.
+                    Also, I enjoy reading books, mostly history and philosophy, to expand my horizon.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>
